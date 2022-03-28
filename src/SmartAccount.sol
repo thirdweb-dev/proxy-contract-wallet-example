@@ -12,6 +12,8 @@ import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
  *  - Changelog:
  *      - Add `owner` parameter to constructor, instead of assigning ownership to `msg.sender`
  *      - Replace `delegateCall` with `call` in the `execute` function body.
+ *      - Add an `executeBatch` function to execute multiple actions in different contracts, in
+ *        a single transaction.
  */
 
 /// @notice Emitted when the caller is not the owner.
