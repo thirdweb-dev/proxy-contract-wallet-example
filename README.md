@@ -1,46 +1,26 @@
-# Forge Template
+# Smart accounts - example
 
-A template for quickly getting started with forge
+This is an example of using 'smart accounts' -- smart contracts owned by an end-user wallet letting the user perform multiple actions
+to different contracts in a single transaction.
 
-## Getting Started
+The end-user owned smart contract is `src/SmartAccount.sol`. This contract is a modified version of [`prb-proxy`](https://github.com/paulrberg/prb-proxy). (See changelog in the contract file).
 
+The example flow can be found in `src/test/SmartAccount.t.sol`. The tests enact the following high level flow: the end user mints 
+some ERC20 and ERC721 tokens (two actions on two different smart contracts) within a single transaction. The application developer or
+end user can choose whether the assets remain in the end-user owned/controlled smart contract wallet, or in the end-user's owned wallet.
+
+## How to run tests
+
+The tests are written using the foundry/forge testing framework. All setup information for foundry/forge can be found [here](https://github.com/gakonst/foundry).
+
+To run tests:
 ```
-mkdir my-project
-cd my-project
-forge init --template https://github.com/FrankieIsLost/forge-template
-git submodule update --init --recursive  ## initialize submodule dependencies
-npm install ## install development dependencies
 forge build
-forge test
+```
+then:
+```
+forge test --match-contract SmartAccount
 ```
 
-## Features
-
-### Testing Utilities
-
-Includes a `Utilities.sol` contract with common testing methods (like creating users with an initial balance), as well as various other utility contracts.
-
-### Preinstalled dependencies
-
-`ds-test` for testing, `forge-std` for better cheatcode UX, and `solmate` for optimized contract implementations.  
-
-### Linting
-
-Pre-configured `solhint` and `prettier-plugin-solidity`. Can be run by
-
-```
-npm run solhint
-npm run prettier
-```
-
-### CI with Github Actions
-
-Automatically run linting and tests on pull requests.
-
-### Default Configuration
-
-Including `.gitignore`, `.vscode`, `remappings.txt`
-
-## Acknowledgement
-
-Inspired by great dapptools templates like https://github.com/gakonst/forge-template, https://github.com/gakonst/dapptools-template and https://github.com/transmissions11/dapptools-template
+### Authors
+- [thirdweb](https://thirdweb.com/)
