@@ -8,8 +8,8 @@ contract Token721 is ERC721 {
 
     constructor() ERC721("Mock NFT", "MOCK") {}
 
-    function mint(address _to) external {
-        _mint(_to, nextTokenIdToMint);
+    function mint() external {
+        _mint(msg.sender, nextTokenIdToMint);
         nextTokenIdToMint += 1;
     }
 }

@@ -15,9 +15,9 @@ contract TargetScript {
         uint256 _erc20AmountToMint
     ) external {
         // Mint ERC20 tokens
-        Token20(_erc20Token).mint(msg.sender, _erc20AmountToMint);
+        Token20(_erc20Token).mint(_erc20AmountToMint);
 
         // Mint ERC721 NFT
-        Token721(_erc721Token).mint(msg.sender);
+        Token721(_erc721Token).mint();
     }
 }
