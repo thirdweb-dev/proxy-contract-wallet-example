@@ -81,6 +81,11 @@ contract SmartAccount is IPRBProxy, ERC721Holder, ERC1155Holder {
         public
         payable
     {
+        require(
+            targets.length == data.length,
+            "unequal targets and execution data"
+        );
+
         for (uint256 i = 0; i < targets.length; i += 1) {
             execute(targets[i], data[i]);
         }
