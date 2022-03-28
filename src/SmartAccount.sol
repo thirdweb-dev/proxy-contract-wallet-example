@@ -8,6 +8,12 @@ import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
 
+/**
+ *  - Changelog:
+ *      - Add `owner` parameter to constructor, instead of assigning ownership to `msg.sender`
+ *      - Replace `delegateCall` with `call` in the `execute` function body.
+ */
+
 /// @notice Emitted when the caller is not the owner.
 error PRBProxy__ExecutionNotAuthorized(
     address owner,
@@ -30,7 +36,7 @@ error PRBProxy__TargetInvalid(address target);
 
 /// @title PRBProxy
 /// @author Paul Razvan Berg
-contract TWSmartAccount is IPRBProxy {
+contract SmartAccount is IPRBProxy, ERC721Holder, ERC1155Holder {
     /// PUBLIC STORAGE ///
 
     /// @inheritdoc IPRBProxy
